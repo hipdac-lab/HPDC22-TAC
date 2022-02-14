@@ -6,7 +6,7 @@ Download and install [SZ](https://github.com/szcompressor/SZ) into **SZDir** fol
 
 ```
 export SZ_HOME=**SZDir**
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/daoce.wang/SZ/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SZ_HOME
 
 ```
 
