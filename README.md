@@ -5,7 +5,7 @@
 Download and install [SZ](https://github.com/szcompressor/SZ) into **SZDir** followed by the instructions provided by SZ's repo.
 
 ```
-export SZ_HOME=**SZDir**
+export SZ_HOME=SZDir
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SZ_HOME
 
 ```
