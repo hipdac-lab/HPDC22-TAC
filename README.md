@@ -4,6 +4,12 @@
 
 Download and install [SZ](https://github.com/szcompressor/SZ) into **SZDir** followed by the instructions provided by SZ's repo.
 
+```
+export SZ_HOME=**SZDir**
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/daoce.wang/SZ/lib
+
+```
+
 ### Step 2: Download Data
 
 Download and unzip data or use example data
@@ -28,37 +34,38 @@ cd data
 ### Step 3.1: Build Our Compressor
 ```
 cd src
-g++ amrcompressor.cpp -o amrcompressor -I SZDir/include/ -L SZDir/lib/ -lSZ -lzstd -lzlib -O3
+g++ amrcompressor.cpp -o amrcompressor -I $SZ_HOME/include/ -L 
+/lib/ -lSZ -lzstd -lzlib -O3
 ```
 
 ### Step 3.2: Build Baseline & zMesh
 ```
 cd baseline
-g++ naive1D.cpp -o naive1D -I SZDir/include/ -L SZDir/lib/ -lSZ -lzstd -lzlib -O3
-g++ 3dBaseline.cpp -o 3dBaseline -I SZDir/include/ -L SZDir/lib/ -lSZ -lzstd -lzlib -O3
-g++ zMesh.cpp -o zMesh -I SZDir/include/ -L SZDir/lib/ -lSZ -lzstd -lzlib -O3
+g++ naive1D.cpp -o naive1D -I $SZ_HOME/include/ -L $SZ_HOME/lib/ -lSZ -lzstd -lzlib -O3
+g++ 3dBaseline.cpp -o 3dBaseline -I $SZ_HOME/include/ -L $SZ_HOME/lib/ -lSZ -lzstd -lzlib -O3
+g++ zMesh.cpp -o zMesh -I $SZ_HOME/include/ -L $SZ_HOME/lib/ -lSZ -lzstd -lzlib -O3
 ```
 
 ### Step 4.1: Test Our Compressor & Baseline
 ```
-./amrcompressor ../data/run2_t3.bin SZDir/example/sz.config eb_level_0 eb_level_1 eb_level_2 eb_level_3
+./amrcompressor ../data/run2_t3.bin $SZ_HOME/example/sz.config eb_level_0 eb_level_1 eb_level_2 eb_level_3
 ```
 
 For example, all AMR levels with the same absolute error bound of 5E+9 for the example Nyx data:
 ```
-./amrcompressor ../data/run2_t3.bin SZDir/example/sz.config 5E+9 5E+9 5E+9 5E+9
+./amrcompressor ../data/run2_t3.bin $SZ_HOME/example/sz.config 5E+9 5E+9 5E+9 5E+9
 ```
 
 ### Step 4.2: Test zMesh
 
 zMesh can only be run on **Run1**, will be modified for Run2 later.
 ```
-./zMesh ../data/grid_z10.bin order256.bin SZDir/example/sz.config eb_level_0 eb_level_1 eb_level_2 eb_level_3
+./zMesh ../data/grid_z10.bin order256.bin $SZ_HOME/example/sz.config eb_level_0 eb_level_1 eb_level_2 eb_level_3
 ```
 
 For example, all AMR levels with the same absolute error bound of 5E+9 for the Run1_Z10:
 ```
-./zMesh ../data/grid_z10.bin order256.bin SZDir/example/sz.config 5E+9 5E+9 5E+9 5E+9
+./zMesh ../data/grid_z10.bin order256.bin $SZ_HOME/example/sz.config 5E+9 5E+9 5E+9 5E+9
 ```
 
 **Results of Run1:**
