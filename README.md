@@ -32,8 +32,7 @@ cd data
 ### Step 3.1: Build Our Compressor
 ```
 cd src
-g++ amrcompressor.cpp -o amrcompressor -I $SZ_HOME/include/ -L 
-/lib/ -lSZ -lzstd -lzlib -O3
+g++ amrcompressor.cpp -o amrcompressor -I $SZ_HOME/include/ -L $SZ_HOME/lib/ -lSZ -lzstd -lzlib -O3
 ```
 
 ### Step 3.2: Build Baseline & zMesh
