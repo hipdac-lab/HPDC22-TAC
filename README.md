@@ -1,4 +1,4 @@
-## Simple Instructions for Testing 3D AMR Lossy Compressor
+## TAC: Optimizing Error-Bounded Lossy Compression for Three-Dimensional Adaptive Mesh Refinement Simulations
 
 ### Step 1 Download SZ
 
